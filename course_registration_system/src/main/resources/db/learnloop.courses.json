@@ -1,0 +1,243 @@
+[{
+  "_id": {
+    "$oid": "67fe9e76bf4fb6574ac669b7"
+  },
+  "title": "Java Programming Masterclass",
+  "description": "Learn Java from scratch to advanced. This comprehensive course covers core Java, OOP concepts, data structures, and practical projects to help you become a proficient Java developer.",
+  "category": "Programming",
+  "imageUrl": "https://www.google.com/imgres?q=java%20programming%20masterclass%20cyan%20blue%20image&imgurl=https%3A%2F%2Flearnprogramming.academy%2Fwp-content%2Fuploads%2F2024%2F11%2F2002954_08e3-23.jpg&imgrefurl=https%3A%2F%2Flearnprogramming.academy%2Fcourses%2Flearn-java-programming-crash-course%2F&docid=3mlIM2q0BFb5uM&tbnid=HeTYa6v8nFrzKM&vet=12ahUKEwjUsvbkqpaNAxWP3TgGHbITBN4QM3oECFYQAA..i&w=750&h=422&hcb=2&ved=2ahUKEwjUsvbkqpaNAxWP3TgGHbITBN4QM3oECFYQAA",
+  "durationWeeks": 12,
+  "level": "Beginner to Advanced",
+  "originalPrice": "99.99",
+  "discountedPrice": "79.99",
+  "tags": [
+    "Java",
+    "Programming",
+    "OOP",
+    "Backend"
+  ],
+  "instructorId": "instructor1",
+  "averageRating": 4.699999809265137,
+  "reviewsCount": 425,
+  "isBestseller": true,
+  "isNew": false,
+  "createdAt": {
+    "$date": "2025-04-15T17:59:18.866Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-15T17:59:18.866Z"
+  },
+  "_class": "com.online_c.learnloop.model.Course"
+},
+{
+  "_id": {
+    "$oid": "67fe9e76bf4fb6574ac669b8"
+  },
+  "title": "Full Stack Web Development",
+  "description": "Master both frontend and backend web development with this all-in-one course. Learn HTML, CSS, JavaScript, React, Node.js, Express, and MongoDB to build complete web applications.",
+  "category": "Web Development",
+  "imageUrl": "https://www.google.com/imgres?q=Full%20stack%20web%20development%20blue%20image&imgurl=https%3A%2F%2Fwww.infyways.com%2F_next%2Fimage%2F%3Furl%3Dhttps%253A%252F%252Fdata.infyways.com%252Fwp-content%252Fuploads%252F2024%252F09%252Ffull-stack-development-guide.png%26w%3D1920%26q%3D75&imgrefurl=https%3A%2F%2Fwww.infyways.com%2Ffull-stack-development-guide%2F&docid=b5qp75rcM0Bu6M&tbnid=BTccNIqCeyXppM&vet=12ahUKEwi2iNvKsJaNAxUCUGcHHYEfNl0QM3oECFsQAA..i&w=1200&h=675&hcb=2&ved=2ahUKEwi2iNvKsJaNAxUCUGcHHYEfNl0QM3oECFsQAA",
+  "durationWeeks": 16,
+  "level": "Intermediate",
+  "originalPrice": "129.99",
+  "discountedPrice": "99.99",
+  "tags": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React",
+    "Node.js",
+    "MongoDB"
+  ],
+  "instructorId": "instructor2",
+  "averageRating": 4.800000190734863,
+  "reviewsCount": 738,
+  "isBestseller": true,
+  "isNew": false,
+  "createdAt": {
+    "$date": "2025-04-15T17:59:18.873Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-15T17:59:18.873Z"
+  },
+  "_class": "com.online_c.learnloop.model.Course"
+},
+{
+  "_id": {
+    "$oid": "67fe9e76bf4fb6574ac669b9"
+  },
+  "title": "Python for Data Science and Machine Learning",
+  "description": "Dive into the world of data science and machine learning using Python. Learn data analysis, visualization, and implement machine learning algorithms for real-world problems.",
+  "category": "Data Science",
+  "imageUrl": "https://www.google.com/imgres?q=Python%20for%20Data%20Science%20and%20Machine%20Learning%20blue%20image&imgurl=https%3A%2F%2Fmedia.geeksforgeeks.org%2Fwp-content%2Fcdn-uploads%2F20230318230239%2FPython-Data-Science-Tutorial.jpg&imgrefurl=https%3A%2F%2Fwww.geeksforgeeks.org%2Fdata-science-with-python-tutorial%2F&docid=M4sTSWhn4MypaM&tbnid=4_bY1CXGjpSRcM&vet=12ahUKEwjs6L_usJaNAxVQ7zgGHWXtHhIQM3oECBYQAA..i&w=1000&h=470&hcb=2&ved=2ahUKEwjs6L_usJaNAxVQ7zgGHWXtHhIQM3oECBYQAA",
+  "durationWeeks": 14,
+  "level": "Intermediate to Advanced",
+  "originalPrice": "149.99",
+  "discountedPrice": "119.99",
+  "tags": [
+    "Python",
+    "Data Science",
+    "Machine Learning",
+    "AI"
+  ],
+  "instructorId": "instructor3",
+  "averageRating": 4.900000095367432,
+  "reviewsCount": 892,
+  "isBestseller": true,
+  "isNew": false,
+  "createdAt": {
+    "$date": "2025-04-15T17:59:18.874Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-15T17:59:18.874Z"
+  },
+  "_class": "com.online_c.learnloop.model.Course"
+},
+{
+  "_id": {
+    "$oid": "67fe9e76bf4fb6574ac669ba"
+  },
+  "title": "Android App Development with Kotlin",
+  "description": "Learn to build modern Android applications using Kotlin. This course covers Android Studio, UI design, data storage, APIs, and publishing your app to the Google Play Store.",
+  "category": "Mobile Development",
+  "imageUrl": "https://www.google.com/imgres?q=Android%20App%20Development%20with%20Kotlin%20blue%20image&imgurl=https%3A%2F%2Fwww.twitchtime.com%2Fwp-content%2Fuploads%2F2019%2F09%2Fkotlin_for_android_banner-1.jpg&imgrefurl=https%3A%2F%2Fwww.twitchtime.com%2Fblogs%2Fkotlin-android-app-development%2F&docid=P-4vXPmEJtnO7M&tbnid=uB-9Tu3XOrvTPM&vet=12ahUKEwj3zt6EsZaNAxWnzzgGHQCYEEsQM3oECHMQAA..i&w=1350&h=552&hcb=2&ved=2ahUKEwj3zt6EsZaNAxWnzzgGHQCYEEsQM3oECHMQAA",
+  "durationWeeks": 10,
+  "level": "Intermediate",
+  "originalPrice": "89.99",
+  "discountedPrice": "69.99",
+  "tags": [
+    "Android",
+    "Kotlin",
+    "Mobile",
+    "App Development"
+  ],
+  "instructorId": "instructor4",
+  "averageRating": 4.599999904632568,
+  "reviewsCount": 315,
+  "isBestseller": false,
+  "isNew": true,
+  "createdAt": {
+    "$date": "2025-04-15T17:59:18.874Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-15T17:59:18.874Z"
+  },
+  "_class": "com.online_c.learnloop.model.Course"
+},
+{
+  "_id": {
+    "$oid": "67fe9e76bf4fb6574ac669bb"
+  },
+  "title": "Ethical Hacking and Cybersecurity",
+  "description": "Learn ethical hacking and cybersecurity from basics to advanced. This course covers network security, vulnerability assessment, penetration testing, and security best practices.",
+  "category": "Cybersecurity",
+  "imageUrl": "https://www.google.com/imgres?q=Ethical%20Hacking%20and%20Cybersecurity%20blue%20image&imgurl=https%3A%2F%2Fwww.shutterstock.com%2Fimage-illustration%2Fethical-hacking-concept-hacker-cyber-260nw-2432577843.jpg&imgrefurl=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fethical-hacking-background&docid=mfYD2IBNnfCGkM&tbnid=_09ZQmRywgkBdM&vet=12ahUKEwjG_KehsZaNAxV76zgGHXpCE9YQM3oECGYQAA..i&w=330&h=280&hcb=2&ved=2ahUKEwjG_KehsZaNAxV76zgGHXpCE9YQM3oECGYQAA",
+  "durationWeeks": 12,
+  "level": "Beginner to Intermediate",
+  "originalPrice": "119.99",
+  "discountedPrice": "89.99",
+  "tags": [
+    "Security",
+    "Ethical Hacking",
+    "Network",
+    "Pentesting"
+  ],
+  "instructorId": "instructor5",
+  "averageRating": 4.699999809265137,
+  "reviewsCount": 512,
+  "isBestseller": false,
+  "isNew": true,
+  "createdAt": {
+    "$date": "2025-04-15T17:59:18.875Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-15T17:59:18.875Z"
+  },
+  "_class": "com.online_c.learnloop.model.Course"
+},
+{
+  "_id": {
+    "$oid": "67fe9e76bf4fb6574ac669bc"
+  },
+  "title": "UI/UX Design Fundamentals",
+  "description": "Master the principles of user interface and user experience design. Learn to create visually appealing, user-friendly designs using industry-standard tools like Figma and Adobe XD.",
+  "category": "Design",
+  "imageUrl": "https://www.google.com/imgres?q=%22UI%2FUX%20Design%20Fundamentals%22%2C%20blue%20image&imgurl=https%3A%2F%2Fwww.aim.com.au%2Fsites%2Fdefault%2Ffiles%2F00960_AIM_Screens_UXDesignFundamentals_640x360.jpg&imgrefurl=https%3A%2F%2Fwww.aim.com.au%2Ftechnology%2Fcourses%2Fux-design-fundamentals&docid=Jc3bpHLkOnO3_M&tbnid=hRiOpXJmxme-vM&vet=12ahUKEwiDsYvGsZaNAxU-S2cHHSYMJi4QM3oECGUQAA..i&w=640&h=360&hcb=2&ved=2ahUKEwiDsYvGsZaNAxU-S2cHHSYMJi4QM3oECGUQAA",
+  "durationWeeks": 8,
+  "level": "Beginner",
+  "originalPrice": "79.99",
+  "discountedPrice": "59.99",
+  "tags": [
+    "UI",
+    "UX",
+    "Design",
+    "Figma",
+    "Adobe XD"
+  ],
+  "instructorId": "instructor6",
+  "averageRating": 4.5,
+  "reviewsCount": 287,
+  "isBestseller": false,
+  "isNew": false,
+  "createdAt": {
+    "$date": "2025-04-15T17:59:18.876Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-15T17:59:18.876Z"
+  },
+  "_class": "com.online_c.learnloop.model.Course"
+},
+{
+  "_id": {
+    "$oid": "67ff4f16ef8caa6c91350ceb"
+  },
+  "title": "Python-Intermediate ",
+  "description": "Advance your Python skills with object-oriented programming, file handling, APIs, regular expressions, and essential libraries like NumPy and Matplotlib.",
+  "category": "Python",
+  "imageUrl": "https://www.google.com/imgres?q=%22Python-Intermediate%20blue%20image&imgurl=https%3A%2F%2Fcodeofcode.org%2Fwp-content%2Fuploads%2F2023%2F01%2FIntermediate-Python-Image.jpeg&imgrefurl=https%3A%2F%2Fcodeofcode.org%2Fcourses%2Fintermediate-python%2F&docid=i3RQEcPfdV5s5M&tbnid=hBdz8zT4YBmiBM&vet=12ahUKEwjFzsjZsZaNAxX4S2cHHYhxEn8QM3oECBsQAA..i&w=1108&h=832&hcb=2&ved=2ahUKEwjFzsjZsZaNAxX4S2cHHYhxEn8QM3oECBsQAA",
+  "durationWeeks": 10,
+  "level": "Beginner to Intermediate",
+  "originalPrice": "89.99",
+  "discountedPrice": "69.99",
+  "tags": [
+    "Python",
+    "APIs",
+    "NumPy",
+    "Pandas"
+  ],
+  "instructorId": "instructor2",
+  "averageRating": 4.8,
+  "reviewsCount": 380,
+  "isBestseller": true,
+  "isNew": true,
+  "createdAt": "2025-04-15T18:10:00.000+00:00",
+  "updatedAt": "2025-04-15T18:10:00.000+00:00",
+  "_class": "com.online_c.learnloop.model.Course"
+},
+{
+  "_id": {
+    "$oid": "67ff505def8caa6c91350cec"
+  },
+  "title": "Artificial Intelligence with TensorFlow",
+  "description": "Build intelligent systems using deep learning and TensorFlow 2.0.",
+  "category": "AI & Machine Learning",
+  "imageUrl": "https://www.google.com/imgres?q=Artificial%20Intelligence%20with%20TensorFlowe%20blue%20image&imgurl=https%3A%2F%2Fcdn.mindmajix.com%2Fcourses%2Fai-deep-learning-with-tensorflow-110620.png&imgrefurl=https%3A%2F%2Fmindmajix.com%2Fai-deep-learning-with-tensorflow-training&docid=w56V0mpKSoN3hM&tbnid=JMm1_P1LgF3tIM&vet=12ahUKEwiw7e7psZaNAxW9SWwGHcnVDjsQM3oECHsQAA..i&w=400&h=240&hcb=2&ved=2ahUKEwiw7e7psZaNAxW9SWwGHcnVDjsQM3oECHsQAA",
+  "durationWeeks": 15,
+  "level": "Advanced",
+  "originalPrice": "129.99",
+  "discountedPrice": "99.99",
+  "tags": [
+    "AI",
+    "Deep Learning",
+    "Neural Networks",
+    "TensorFlow"
+  ],
+  "instructorId": "instructor6",
+  "averageRating": 4.9,
+  "reviewsCount": 310,
+  "isBestseller": true,
+  "isNew": true,
+  "createdAt": "2025-04-15T18:30:00.000+00:00",
+  "updatedAt": "2025-04-15T18:30:00.000+00:00",
+  "_class": "com.online_c.learnloop.model.Course"
+}]

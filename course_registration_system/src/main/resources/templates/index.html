@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{layout/main :: head('Home')}">
+    <style>
+        /* Custom Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+        
+        /* Base Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #0a2463;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #0a2463 0%, #1e3a8a 100%);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(10, 36, 99, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            margin-top: 2rem;
+        }
+        
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(71, 202, 255, 0.3) 0%, rgba(0, 112, 192, 0) 70%);
+            border-radius: 50%;
+            transform: translate(30%, -30%);
+        }
+        
+        .hero-content {
+            padding: 4rem 2rem;
+            position: relative;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #ffffff, #47caff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-text {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background-color: #47caff;
+            border-color: #47caff;
+            color: #0a2463;
+            font-weight: 600;
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(71, 202, 255, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background-color: #0a2463;
+            border-color: #0a2463;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(10, 36, 99, 0.4);
+        }
+        
+        .btn-outline-primary {
+            color: white;
+            border-color: white;
+            font-weight: 500;
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: white;
+            color: #0a2463;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Section Headers */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            color: #0a2463;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, #47caff, #0a2463);
+            border-radius: 2px;
+        }
+        
+        /* Course Cards */
+        .course-card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(10, 36, 99, 0.15);
+        }
+        
+        .course-card .card-img-top {
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .course-card .card-body {
+            padding: 1.5rem;
+        }
+        
+        .course-card .card-title {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #0a2463;
+        }
+        
+        .course-card .card-text {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        
+        .course-category {
+            background-color: rgba(71, 202, 255, 0.15);
+            color: #0a2463;
+            font-weight: 500;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .rating {
+            font-weight: 600;
+            color: #0a2463;
+        }
+        
+        .rating i {
+            color: #ffc107;
+            margin-right: 3px;
+        }
+        
+        /* Feature Cards */
+        .feature-card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            background-color: white;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(10, 36, 99, 0.1);
+        }
+        
+        .feature-card .card-body {
+            padding: 2rem 1.5rem;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #47caff;
+            display: inline-block;
+            padding: 1rem;
+            border-radius: 50%;
+            background-color: rgba(71, 202, 255, 0.1);
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Footer Enhancement */
+        footer {
+            background-color: #0a2463;
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content {
+                padding: 3rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav th:replace="~{layout/main :: navbar}"></nav>
+    
+    <div class="container">
+        <div class="hero-section mb-5">
+            <div class="hero-content">
+                <h1 class="hero-title">Welcome to LearnLoop</h1>
+                <p class="hero-text">Expand your skills with our selection of top-quality online courses. Learn at your own pace and achieve your learning goals.</p>
+                <a th:href="@{/courses}" class="btn btn-primary btn-lg">Browse Courses</a>
+                <a sec:authorize="!isAuthenticated()" th:href="@{/register}" class="btn btn-outline-primary btn-lg ms-3">Sign Up</a>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Featured Courses</h2>
+        
+        <div class="row">
+            <div th:each="course : ${featuredCourses}" class="col-md-3 mb-4">
+                <div class="card course-card h-100">
+                    <img th:if="${course.imageUrl}" th:src="${course.imageUrl}" class="card-img-top" alt="Course thumbnail">
+                    <img th:unless="${course.imageUrl}" src="https://placehold.co/600x400?text=Course" class="card-img-top" alt="Course thumbnail">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title" th:text="${course.title}">Course Title</h5>
+                        <p class="card-text" th:text="${#strings.abbreviate(course.description, 100)}">Course description...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-auto">
+                            <span class="course-category" th:text="${course.category}">Category</span>
+                            <div class="rating">
+                                <i class="bi bi-star-fill"></i>
+                                <span th:text="${course.averageRating}">4.5</span>
+                            </div>
+                        </div>
+                        <a th:href="@{/courses/{id}(id=${course.id})}" class="btn btn-primary mt-3 w-100">View Course</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-5 py-4">
+            <div class="col-md-4 mb-4">
+                <div class="feature-card text-center h-100">
+                    <div class="card-body">
+                        <span class="feature-icon">
+                            <i class="bi bi-laptop"></i>
+                        </span>
+                        <h3>Learn Online</h3>
+                        <p>Access our courses anytime, anywhere. Study at your own pace with flexible scheduling.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-card text-center h-100">
+                    <div class="card-body">
+                        <span class="feature-icon">
+                            <i class="bi bi-award"></i>
+                        </span>
+                        <h3>Quality Content</h3>
+                        <p>All our courses are created by industry experts to ensure you receive the best education.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-card text-center h-100">
+                    <div class="card-body">
+                        <span class="feature-icon">
+                            <i class="bi bi-people"></i>
+                        </span>
+                        <h3>Community Support</h3>
+                        <p>Join our community of learners to share knowledge and get help when you need it.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div th:replace="~{layout/main :: footer}"></div>
+</body>
+</html>

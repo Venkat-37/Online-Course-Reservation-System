@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{layout/main :: head('My Courses')}"></head>
+<body>
+    <nav th:replace="~{layout/main :: navbar}"></nav>
+    
+    <div class="container mt-4">
+        <h1 class="mb-4">My Courses</h1>
+        
+        <!-- Debug information -->
+        <div class="alert alert-info mb-4">
+            <h5>Debug Information:</h5>
+            <p>Number of enrollments: <span th:text="${#lists.size(enrollments)}">0</span></p>
+            <div th:if="${!#lists.isEmpty(enrollments)}">
+                <p>First enrollment details:</p>
+                <ul>
+                    <li>ID: <span th:text="${enrollments[0].id}">ID</span></li>
+                    <li>Course ID: <span th:text="${enrollments[0].courseId}">Course ID</span></li>
+                    <li>Course Title: <span th:text="${enrollments[0].courseTitle}">Course Title</span></li>
+                    <li>Status: <span th:text="${enrollments[0].status}">Status</span></li>
+                    <li>Progress: <span th:text="${enrollments[0].progressPercentage}">0</span>%</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-body">
+                <ul class="nav nav-tabs" id="coursesTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="active-tab" data-bs-toggle="tab" data-bs-target="#active" type="button" role="tab" aria-controls="active" aria-selected="true">
+                            Active Courses
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="completed-tab" data-bs-toggle="tab" data-bs-target="#completed" type="button" role="tab" aria-controls="completed" aria-selected="false">
+                            Completed Courses
+                        </button>
+                    </li>
+                </ul>
+                
+                <div class="tab-content pt-4" id="coursesTabContent">
+                    <!-- Active Courses Tab -->
+                    <div class="tab-pane fade show active" id="active" role="tabpanel" aria-labelledby="active-tab">
+                        <div th:if="${#lists.isEmpty(enrollments) || !#lists.contains(enrollments.![status], 'ACTIVE')}" class="alert alert-info">
+                            You have no active courses. <a th:href="@{/courses}" class="alert-link">Browse courses</a> to get started.
+                        </div>
+                        
+                        <div class="row">
+                            <div th:each="enrollment : ${enrollments}" th:if="${enrollment.status == 'ACTIVE'}" class="col-md-4 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title" th:text="${enrollment.courseTitle}">Course Title</h5>
+                                        <div class="progress mb-3" title="Course Progress">
+                                            <div class="progress-bar" role="progressbar" th:style="'width: ' + ${enrollment.progressPercentage} + '%'" 
+                                                 th:text="${enrollment.progressPercentage} + '%'"></div>
+                                        </div>
+                                        <p class="card-text text-muted" th:text="'Enrolled on: ' + ${#temporals.format(enrollment.enrolledAt, 'MMM dd, yyyy')}">
+                                            Enrolled on: Apr 10, 2025
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <a th:href="@{/courses/{id}(id=${enrollment.courseId})}" class="btn btn-primary btn-sm">View Course</a>
+                                            <form th:if="${enrollment.progressPercentage < 100}" 
+                                                  th:action="@{/profile/enrollments/{id}/progress(id=${enrollment.id})}" method="post">
+                                                <input type="hidden" name="progressPercentage" value="100">
+                                                <button type="submit" class="btn btn-outline-success btn-sm">Mark as Complete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Completed Courses Tab -->
+                    <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-tab">
+                        <div th:if="${#lists.isEmpty(enrollments) || !#lists.contains(enrollments.![status], 'COMPLETED')}" class="alert alert-info">
+                            You haven't completed any courses yet.
+                        </div>
+                        
+                        <div class="row">
+                            <div th:each="enrollment : ${enrollments}" th:if="${enrollment.status == 'COMPLETED'}" class="col-md-4 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <div class="ribbon ribbon-top-right"><span>Completed</span></div>
+                                        <h5 class="card-title" th:text="${enrollment.courseTitle}">Course Title</h5>
+                                        <div class="progress mb-3" title="Course Progress">
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: 100%" 
+                                                 th:text="${enrollment.progressPercentage} + '%'">100%</div>
+                                        </div>
+                                        <p class="card-text text-muted">
+                                            <span th:text="'Enrolled: ' + ${#temporals.format(enrollment.enrolledAt, 'MMM dd, yyyy')}">
+                                                Enrolled: Apr 10, 2025
+                                            </span><br>
+                                            <span th:if="${enrollment.completedAt}" th:text="'Completed: ' + ${#temporals.format(enrollment.completedAt, 'MMM dd, yyyy')}">
+                                                Completed: May 15, 2025
+                                            </span>
+                                        </p>
+                                        <a th:href="@{/courses/{id}(id=${enrollment.courseId})}" class="btn btn-primary btn-sm">Review Course</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a th:href="@{/courses}" class="btn btn-outline-primary">Browse More Courses</a>
+        </div>
+    </div>
+    
+    <style>
+    /* Ribbon style for completed courses */
+    .ribbon {
+        width: 150px;
+        height: 150px;
+        overflow: hidden;
+        position: absolute;
+    }
+    .ribbon-top-right {
+        top: -10px;
+        right: -10px;
+    }
+    .ribbon-top-right::before,
+    .ribbon-top-right::after {
+        border-top-color: transparent;
+        border-right-color: transparent;
+    }
+    .ribbon-top-right::before {
+        top: 0;
+        left: 0;
+    }
+    .ribbon-top-right::after {
+        bottom: 0;
+        right: 0;
+    }
+    .ribbon-top-right span {
+        position: absolute;
+        top: 30px;
+        right: -25px;
+        transform: rotate(45deg);
+        width: 100px;
+        padding: 5px 0;
+        background-color: #28a745;
+        color: white;
+        text-align: center;
+        font-size: 13px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+    </style>
+    
+    <div th:replace="~{layout/main :: footer}"></div>
+</body>
+</html> 

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{layout/main :: head('Course Details')}"></head>
+<body>
+    <nav th:replace="~{layout/main :: navbar}"></nav>
+    
+    <div class="container mt-4">
+        <div th:if="${param.enrolled}" class="alert alert-success">
+            You have successfully enrolled in this course!
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <img th:if="${course.imageUrl}" th:src="${course.imageUrl}" class="card-img-top" alt="Course thumbnail">
+                    <img th:unless="${course.imageUrl}" src="https://placehold.co/1200x600?text=Course" class="card-img-top" alt="Course thumbnail">
+                    <div class="card-body">
+                        <h1 class="card-title" th:text="${course.title}">Course Title</h1>
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="badge bg-info me-2" th:text="${course.category}">Category</span>
+                            <div class="ms-2">
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <span th:text="${course.averageRating}">4.5</span>
+                            </div>
+                        </div>
+                        
+                        <h4>About this course</h4>
+                        <p class="card-text" th:text="${course.description}">Course description...</p>
+                        
+                        <h4>What you'll learn</h4>
+                        <p>This course will teach you valuable skills in this subject area.</p>
+                        
+                        <div th:if="${course.instructorId != null}">
+                            <h4>Instructor</h4>
+                            <p>Experienced instructor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Course Summary</h5>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Duration:
+                                <span th:text="${course.durationWeeks} + ' weeks'">12 weeks</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Level:
+                                <span th:text="${course.level}">Beginner</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Reviews:
+                                <span th:text="${course.reviewsCount}">0</span>
+                            </li>
+                        </ul>
+                        
+                        <div th:if="${isEnrolled}" class="alert alert-success text-center">
+                            <i class="bi bi-check-circle-fill"></i> You are enrolled in this course
+                        </div>
+                        
+                        <form th:unless="${isEnrolled}" th:action="@{/courses/{id}/enroll(id=${course.id})}" method="post">
+                            <button type="submit" class="btn btn-primary w-100" sec:authorize="isAuthenticated()">Enroll Now</button>
+                            <a th:href="@{/login}" class="btn btn-primary w-100" sec:authorize="!isAuthenticated()">Login to Enroll</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div th:replace="~{layout/main :: footer}"></div>
+</body>
+</html> 

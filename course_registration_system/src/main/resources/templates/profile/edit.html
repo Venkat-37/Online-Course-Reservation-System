@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{layout/main :: head('Edit Profile')}"></head>
+<body>
+    <nav th:replace="~{layout/main :: navbar}"></nav>
+    
+    <div class="container mt-4">
+        <h1 class="mb-4">Edit Profile</h1>
+        
+        <form th:action="@{/profile/edit}" th:object="${profile}" method="post">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <img class="rounded-circle mb-3" src="https://placehold.co/150x150" alt="Profile Picture">
+                            <h5 class="card-title" th:text="${profile.fullName}">User Name</h5>
+                            <p class="text-muted" th:text="${profile.email}">user@example.com</p>
+                            <div class="progress mb-3" role="progressbar">
+                                <div class="progress-bar" th:style="'width: ' + ${profile.profileCompletionPercentage} + '%'" 
+                                     th:text="${profile.profileCompletionPercentage} + '%'">60%</div>
+                            </div>
+                            <p class="small text-muted">Profile Completion</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-9">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Basic Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="fullName" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="fullName" th:field="*{fullName}" required>
+                                    <div class="text-danger" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone" class="form-label">Phone</label>
+                                    <input type="tel" class="form-control" id="phone" th:field="*{phone}">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="dateOfBirth" class="form-label">Date of Birth</label>
+                                    <input type="date" class="form-control" id="dateOfBirth" th:field="*{dateOfBirth}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="location" class="form-label">Location</label>
+                                    <input type="text" class="form-control" id="location" th:field="*{location}" placeholder="City, Country">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Education & Profession</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="education" class="form-label">Education</label>
+                                    <input type="text" class="form-control" id="education" th:field="*{education}" placeholder="Highest degree earned">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="profession" class="form-label">Profession</label>
+                                    <input type="text" class="form-control" id="profession" th:field="*{profession}" placeholder="Current profession">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">About Me</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="bio" class="form-label">Biography</label>
+                                <textarea class="form-control" id="bio" th:field="*{bio}" rows="4" placeholder="Tell us about yourself"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="interests" class="form-label">Interests (comma separated)</label>
+                                <input type="text" class="form-control" id="interests" name="interestsString" 
+                                       th:value="${#strings.listJoin(profile.interests ?: new java.util.ArrayList(), ', ')}" 
+                                       placeholder="Web Development, Data Science, UI/UX, etc.">
+                                <div class="form-text">Enter your interests separated by commas</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Links & Social Media</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="linkedinProfile" class="form-label">LinkedIn Profile</label>
+                                <input type="url" class="form-control" id="linkedinProfile" th:field="*{linkedinProfile}" placeholder="https://www.linkedin.com/in/yourprofile">
+                            </div>
+                            <div class="mb-3">
+                                <label for="githubProfile" class="form-label">GitHub Profile</label>
+                                <input type="url" class="form-control" id="githubProfile" th:field="*{githubProfile}" placeholder="https://github.com/yourusername">
+                            </div>
+                            <div class="mb-3">
+                                <label for="personalWebsite" class="form-label">Personal Website</label>
+                                <input type="url" class="form-control" id="personalWebsite" th:field="*{personalWebsite}" placeholder="https://yourwebsite.com">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between">
+                        <a th:href="@{/profile}" class="btn btn-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <div th:replace="~{layout/main :: footer}"></div>
+</body>
+</html> 

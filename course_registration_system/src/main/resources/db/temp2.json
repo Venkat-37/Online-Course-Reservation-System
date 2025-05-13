@@ -1,0 +1,21 @@
+{
+  
+    "title": "Artificial Intelligence with TensorFlow",
+    "description": "Build intelligent systems using deep learning and TensorFlow 2.0.",
+    "category": "AI & Machine Learning",
+    "imageUrl": "https://placehold.co/600x400?text=AI+TensorFlow",
+    "durationWeeks": 15,
+    "level": "Advanced",
+    "originalPrice": "129.99",
+    "discountedPrice": "99.99",
+    "tags": ["AI", "Deep Learning", "Neural Networks", "TensorFlow"],
+    "instructorId": "instructor6",
+    "averageRating": 4.9,
+    "reviewsCount": 310,
+    "isBestseller": true,
+    "isNew": true,
+    "createdAt": "2025-04-15T18:30:00.000+00:00",
+    "updatedAt": "2025-04-15T18:30:00.000+00:00",
+    "_class": "com.online_c.learnloop.model.Course"
+  }
+  

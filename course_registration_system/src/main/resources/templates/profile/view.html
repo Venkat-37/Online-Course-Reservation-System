@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{layout/main :: head('My Profile')}"></head>
+<body>
+    <nav th:replace="~{layout/main :: navbar}"></nav>
+    
+    <div class="container mt-4">
+        <div th:if="${param.updated}" class="alert alert-success">
+            Your profile has been updated successfully!
+        </div>
+        
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card mb-4">
+                    <div class="card-body text-center">
+                        <img class="rounded-circle mb-3" src="https://placehold.co/150x150" alt="Profile Picture">
+                        <h5 class="card-title" th:text="${profile.fullName}">User Name</h5>
+                        <p class="text-muted" th:text="${profile.profession}">Profession</p>
+                        <div class="progress mb-3" role="progressbar">
+                            <div class="progress-bar" th:style="'width: ' + ${profile.profileCompletionPercentage} + '%'" 
+                                 th:text="${profile.profileCompletionPercentage} + '%'">60%</div>
+                        </div>
+                        <p class="small text-muted">Profile Completion</p>
+                        <a th:href="@{/profile/edit}" class="btn btn-primary">Edit Profile</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Quick Links</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <a th:href="@{/profile}" class="text-decoration-none">
+                                    <i class="bi bi-person"></i> My Profile
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a th:href="@{/profile/enrollments}" class="text-decoration-none">
+                                    <i class="bi bi-journal-check"></i> My Enrollments
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-9">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Profile Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Full Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary" th:text="${profile.fullName}">
+                                User Name
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary" th:text="${profile.email}">
+                                user@example.com
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Phone</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary" th:text="${profile.phone ?: 'Not provided'}">
+                                (123) 456-7890
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Location</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary" th:text="${profile.location ?: 'Not provided'}">
+                                City, Country
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Education</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary" th:text="${profile.education ?: 'Not provided'}">
+                                Bachelor's Degree
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Profession</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary" th:text="${profile.profession ?: 'Not provided'}">
+                                Software Developer
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">About Me</h5>
+                    </div>
+                    <div class="card-body">
+                        <p th:text="${profile.bio ?: 'No biography provided.'}">
+                            User biography goes here.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Interests</h5>
+                    </div>
+                    <div class="card-body">
+                        <div th:if="${profile.interests != null && !profile.interests.isEmpty()}">
+                            <span th:each="interest : ${profile.interests}" 
+                                  class="badge bg-primary me-1 mb-1" th:text="${interest}">Interest</span>
+                        </div>
+                        <p th:unless="${profile.interests != null && !profile.interests.isEmpty()}" class="text-muted">
+                            No interests provided.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Links & Social Media</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-2" th:if="${profile.linkedinProfile}">
+                            <div class="col-sm-3">
+                                <i class="bi bi-linkedin me-2"></i> LinkedIn
+                            </div>
+                            <div class="col-sm-9">
+                                <a th:href="${profile.linkedinProfile}" target="_blank" th:text="${profile.linkedinProfile}">
+                                    LinkedIn Profile
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row mb-2" th:if="${profile.githubProfile}">
+                            <div class="col-sm-3">
+                                <i class="bi bi-github me-2"></i> GitHub
+                            </div>
+                            <div class="col-sm-9">
+                                <a th:href="${profile.githubProfile}" target="_blank" th:text="${profile.githubProfile}">
+                                    GitHub Profile
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row mb-2" th:if="${profile.personalWebsite}">
+                            <div class="col-sm-3">
+                                <i class="bi bi-globe me-2"></i> Website
+                            </div>
+                            <div class="col-sm-9">
+                                <a th:href="${profile.personalWebsite}" target="_blank" th:text="${profile.personalWebsite}">
+                                    Personal Website
+                                </a>
+                            </div>
+                        </div>
+                        <p th:if="${profile.linkedinProfile == null and profile.githubProfile == null and profile.personalWebsite == null}" class="text-muted">
+                            No links provided.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div th:replace="~{layout/main :: footer}"></div>
+</body>
+</html> 

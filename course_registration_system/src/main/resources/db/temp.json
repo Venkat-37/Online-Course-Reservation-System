@@ -1,0 +1,21 @@
+{
+    
+    "title": "Python-Intermediate ",
+    "description": "Advance your Python skills with object-oriented programming, file handling, APIs, regular expressions, and essential libraries like NumPy and Matplotlib.",
+    "category": "Python",
+    "imageUrl": "https://placehold.co/600x400?text=Python+DS",
+    "durationWeeks": 10,
+    "level": "Beginner to Intermediate",
+    "originalPrice": "89.99",
+    "discountedPrice": "69.99",
+    "tags": ["Python", "APIs", "NumPy", "Pandas"],
+    "instructorId": "instructor2",
+    "averageRating": 4.8,
+    "reviewsCount": 380,
+    "isBestseller": true,
+    "isNew": true,
+    "createdAt": "2025-04-15T18:10:00.000+00:00",
+    "updatedAt": "2025-04-15T18:10:00.000+00:00",
+    "_class": "com.online_c.learnloop.model.Course"
+  }
+  
